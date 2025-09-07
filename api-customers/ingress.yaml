@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: api.hugoeschlimann.fr
+    - host: customer.payetonkawa.shop
       http:
         paths:
           - path: /
