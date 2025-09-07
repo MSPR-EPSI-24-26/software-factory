@@ -26,7 +26,7 @@ spec:
             - name: POSTGRES_DB
               value: "api_customers"
           volumeMounts:
-            - name: db-data
+            - name: db-storage
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: db-storage
