@@ -28,3 +28,13 @@ spec:
               value: "production"
             - name: PORT
               value: "3000"
+            - name: DATABASE_HOST
+              value: "db-service"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              value: "password"
+            - name: DATABASE_NAME
+              value: "api_customers"
