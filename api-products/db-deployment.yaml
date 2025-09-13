@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-customers
-  namespace: api-customers
+  name: db-products
+  namespace: api-products
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: db-customers
+      app: db-products
   template:
     metadata:
       labels:
-        app: db-customers
+        app: db-products
     spec:
       containers:
         - name: postgres
@@ -24,12 +24,12 @@ spec:
             - name: POSTGRES_PASSWORD
               value: "password"
             - name: POSTGRES_DB
-              value: "api_customers"
+              value: "api_products"
           volumeMounts:
-            - name: db-storage-customers
+            - name: db-storage-products
               mountPath: /var/lib/postgresql/data
       volumes:
-        - name: db-storage-customers
+        - name: db-storage-products
           emptyDir: {}
           # persistentVolumeClaim:
-          #   claimName: db-pvc-customers
+          #   claimName: db-pvc-products

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-service-customers
-  namespace: api-customers
+  name: db-service-products
+  namespace: api-products
 spec:
   selector:
-    app: db-customers
+    app: db-products
   ports:
     - port: 5432
       targetPort: 5432

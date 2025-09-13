@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: api-customers-ingress
-  namespace: api-customers
+  name: api-products-ingress
+  namespace: api-products
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: customer.payetonkawa.shop
+    - host: product.payetonkawa.shop
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: api-customers-service
+                name: api-products-service
                 port:
                   number: 3000
