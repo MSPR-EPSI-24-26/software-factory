@@ -9,4 +9,4 @@ spec:
     app: api-orders
   ports:
     - port: 3001
-      targetPort: 3001
+      targetPort: 3000
