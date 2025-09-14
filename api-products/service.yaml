@@ -9,4 +9,4 @@ spec:
     app: api-products
   ports:
     - port: 3002
-      targetPort: 3002
+      targetPort: 3000
