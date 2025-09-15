@@ -5,7 +5,7 @@ Retourne le nom complet d'une ressource
 {{- printf "api-%s" .name | trunc 63 | trimSuffix "-" -}}
 {{- end }}
 
-{{- define "api.defaults" -}}
+{{- define "apis.defaults" -}}
 secret: ghcr-secret
 db:
   port: 5432
