@@ -1,0 +1,24 @@
+{{- range $name, $api := .Values.apis }}
+{{- if $api.hpa.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "apis.fullname" (dict "name" $name) }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "apis.fullname" (dict "name" $name) }}
+  minReplicas: {{ $api.hpa.minReplicas }}
+  maxReplicas: {{ $api.hpa.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ $api.hpa.targetCPUUtilizationPercentage }}
+---
+{{- end }}
+{{- end }}

@@ -1,0 +1,36 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
+{{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "apis.fullname" (dict "name" $name) }}
+  namespace: {{ $.Values.namespace }}
+  labels:
+    app: {{ include "apis.fullname" (dict "name" $name) }}
+spec:
+  replicas: {{ $api.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "apis.fullname" (dict "name" $name) }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "apis.fullname" (dict "name" $name) }}
+    spec:
+      imagePullSecrets:
+        - name: {{ $api.secret }}
+      containers:
+        - name: {{ include "apis.fullname" (dict "name" $name) }}
+          image: {{ $api.image }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ $api.port }}
+          env:
+            {{- range $key, $value := $api.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+---
+{{- end }}

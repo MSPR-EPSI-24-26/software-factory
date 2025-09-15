@@ -1,0 +1,83 @@
+namespace: default
+
+apis:
+  customers:
+    # image: ghcr.io/mspr-epsi-24-26/api-customers:latest
+    # replicas: 1
+    port: 3000
+    appPort: 3000
+    # secret: ghcr-secret
+    # db:
+    #   port: 5432
+    #   path: /var/lib/postgresql/data
+    #   volume: 1Gi
+    env:
+      NODE_ENV: production
+      DATABASE_HOST: db-service-customers
+      DATABASE_PORT: "5432"
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: api_customers
+    hpa:
+      enabled: true
+      # minReplicas: 2
+      # maxReplicas: 6
+      # targetCPUUtilizationPercentage: 50
+    ingress:
+      enabled: true
+      # host: customer.payetonkawa.shop
+      # port: 3000
+
+  orders:
+    # image: ghcr.io/mspr-epsi-24-26/api-orders:latest
+    replicas: 1
+    port: 3000
+    appPort: 3001
+    # secret: ghcr-secret
+    # db:
+    #   port: 5432
+    #   path: /var/lib/postgresql/data
+    #   volume: 1Gi
+    env:
+      NODE_ENV: production
+      DATABASE_HOST: db-service-orders
+      DATABASE_PORT: "5432"
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: api_orders
+    hpa:
+      enabled: true
+      # minReplicas: 2
+      # maxReplicas: 6
+      # targetCPUUtilizationPercentage: 50
+    ingress:
+      enabled: true
+      host: order.payetonkawa.shop
+      port: 3000
+
+  products:
+    # image: ghcr.io/mspr-epsi-24-26/api-products:latest
+    replicas: 1
+    port: 3000
+    appPort: 3002
+    # secret: ghcr-secret
+    # db:
+    #   port: 5432
+    #   path: /var/lib/postgresql/data
+    #   volume: 1Gi
+    env:
+      NODE_ENV: production
+      DATABASE_HOST: db-service-products
+      DATABASE_PORT: "5432"
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: api_products
+    hpa:
+      enabled: true
+      # minReplicas: 2
+      # maxReplicas: 6
+      # targetCPUUtilizationPercentage: 50
+    ingress:
+      enabled: true
+      host: product.payetonkawa.shop
+      port: 3000

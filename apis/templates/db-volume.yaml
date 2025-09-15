@@ -1,0 +1,14 @@
+{{- range $name, $api := .Values.apis }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "apis.fullname" (dict "name" $name) }}-db-pvc
+  namespace: {{ $.Values.namespace }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ $api.db.volume }}
+---
+{{- end }}

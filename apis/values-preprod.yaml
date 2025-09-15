@@ -1,0 +1,23 @@
+namespace: preprod
+
+apis:
+  customers:
+    image: ghcr.io/mspr-epsi-24-26/api-customers:dev-tag
+    replicas: 1
+    ingress:
+      host: preprod.customer.payetonkawa.shop
+      port: 3000
+  
+  products:
+    image: ghcr.io/mspr-epsi-24-26/api-products:dev-tag
+    replicas: 1
+    ingress:
+      host: preprod.product.payetonkawa.shop
+      port: 3000
+  
+  orders:
+    image: ghcr.io/mspr-epsi-24-26/api-orders:dev-tag
+    replicas: 1
+    ingress:
+      host: preprod.product.payetonkawa.shop
+      port: 3000

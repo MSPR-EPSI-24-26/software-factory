@@ -1,0 +1,14 @@
+{{- range $name, $api := .Values.apis }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "apis.fullname" (dict "name" $name) }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  selector:
+    app: {{ include "apis.fullname" (dict "name" $name) }}
+  ports:
+    - port: {{ $api.appPort }}
+      targetPort: {{ $api.port }}
+---
+{{- end }}

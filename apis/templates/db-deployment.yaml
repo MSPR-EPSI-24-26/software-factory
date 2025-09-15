@@ -1,0 +1,40 @@
+{{- range $name, $api := .Values.apis }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "apis.fullname" (dict "name" $name) }}-db
+  namespace: {{ $.Values.namespace }}
+  labels:
+    app: {{ include "apis.fullname" (dict "name" $name) }}-db
+spec:
+  replicas: {{ $api.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "apis.fullname" (dict "name" $name) }}-db
+  template:
+    metadata:
+      labels:
+        app: {{ include "apis.fullname" (dict "name" $name) }}-db
+    spec:
+      containers:
+        - name: {{ include "apis.fullname" (dict "name" $name) }}-db
+          image: postgres:16-alpine
+          ports:
+            - containerPort: {{ $api.dbPort }}
+          env:
+            - name: POSTGRES_USER
+              value: {{ $api.env.DATABASE_USER | quote }}
+            - name: POSTGRES_PASSWORD
+              value: {{ $api.env.DATABASE_PASSWORD | quote }}
+            - name: POSTGRES_DB
+              value: {{ $api.env.DATABASE_NAME | quote }}
+          volumeMounts:
+            - name: {{ include "apis.fullname" (dict "name" $name) }}-storage
+              mountPath: {{ $api.db.path }}
+    volumes:
+      - name: {{ include "apis.fullname" (dict "name" $name) }}-storage
+        persistentVolumeClaim:
+          claimName: {{ include "apis.fullname" (dict "name" $name) }}-db-pvc
+
+---
+{{- end }}
