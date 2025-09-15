@@ -2,7 +2,7 @@ namespace: prod
 
 apis:
   customers:
-    image: ghcr.io/mspr-epsi-24-26/api-customers:5677e70b41f49081bb51c06122953ba24ee74666
+    image: ghcr.io/mspr-epsi-24-26/api-customers:c51b8ecd5ec9de5d7236c590efe48f3ec0482513
     replicas: 3
     ingress:
       host: customer.payetonkawa.shop
