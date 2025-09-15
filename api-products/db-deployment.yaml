@@ -30,6 +30,5 @@ spec:
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: db-storage-products
-          emptyDir: {}
-          # persistentVolumeClaim:
-          #   claimName: db-pvc-products
+          persistentVolumeClaim:
+            claimName: db-pvc-products
