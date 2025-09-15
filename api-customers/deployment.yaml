@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-customers
-  namespace: api-customers
+  namespace: payetonkawa
   labels:
     app: api-customers
 spec:

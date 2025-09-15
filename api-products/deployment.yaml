@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-products
-  namespace: api-products
+  namespace: payetonkawa
   labels:
     app: api-products
 spec:
@@ -19,15 +19,15 @@ spec:
         - name: ghcr-secret
       containers:
         - name: api-products
-          image: ghcr.io/mspr-epsi-24-26/api-products:f8e3b2e750a751144240763ed199c95ed80e485a
+          image: ghcr.io/mspr-epsi-24-26/api-products:85596a9cd4e931fe782778192d73cfb76f75eb9f
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 3002
           env:
             - name: NODE_ENV
               value: "production"
             - name: PORT
-              value: "3000"
+              value: "3002"
             - name: DATABASE_HOST
               value: "db-service-products"
             - name: DATABASE_PORT

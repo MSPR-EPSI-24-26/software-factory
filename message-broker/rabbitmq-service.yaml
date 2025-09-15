@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq-service
-  namespace: message-broker
+  namespace: payetonkawa
 spec:
   type: ClusterIP
   selector:

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
-  namespace: message-broker
+  namespace: payetonkawa
   labels:
     app: rabbitmq
 spec:

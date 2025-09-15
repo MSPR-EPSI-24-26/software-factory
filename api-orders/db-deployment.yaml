@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-orders
-  namespace: api-orders
+  namespace: payetonkawa
 spec:
   replicas: 2
   selector:

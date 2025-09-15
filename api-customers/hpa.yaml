@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-customers
-  namespace: api-customers
+  namespace: payetonkawa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api-products-service
-  namespace: api-products
+  namespace: payetonkawa
 spec:
   type: ClusterIP
   selector:
     app: api-products
   ports:
     - port: 3002
-      targetPort: 3000
+      targetPort: 3002
