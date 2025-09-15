@@ -13,7 +13,7 @@ apis:
     #   volume: 1Gi
     env:
       NODE_ENV: production
-      DATABASE_HOST: db-service-customers
+      DATABASE_HOST: api-customers-db
       DATABASE_PORT: "5432"
       DATABASE_USER: user
       DATABASE_PASSWORD: password
@@ -40,7 +40,7 @@ apis:
     #   volume: 1Gi
     env:
       NODE_ENV: production
-      DATABASE_HOST: db-service-orders
+      DATABASE_HOST: api-orders-db
       DATABASE_PORT: "5432"
       DATABASE_USER: user
       DATABASE_PASSWORD: password
@@ -67,7 +67,7 @@ apis:
     #   volume: 1Gi
     env:
       NODE_ENV: production
-      DATABASE_HOST: db-service-products
+      DATABASE_HOST: api-products-db
       DATABASE_PORT: "5432"
       DATABASE_USER: user
       DATABASE_PASSWORD: password
