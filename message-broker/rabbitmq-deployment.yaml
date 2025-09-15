@@ -28,11 +28,11 @@ spec:
             - name: NODE_ENV
               value: "production"
             - name: RABBITMQ_DEFAULT_USER
-              value: admin
+              value: "admin"
             - name: RABBITMQ_DEFAULT_PASS
-              value: admin123
+              value: "admin123"
             - name: RABBITMQ_DEFAULT_VHOST
-              value: /
+              value: "/"
           volumeMounts:
             - name: rabbitmq-storage
               mountPath: /var/lib/rabbitmq
