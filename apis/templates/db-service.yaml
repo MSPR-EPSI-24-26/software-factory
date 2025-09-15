@@ -1,4 +1,7 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
 {{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
+
 apiVersion: v1
 kind: Service
 metadata:

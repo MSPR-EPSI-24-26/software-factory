@@ -1,4 +1,7 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
 {{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
+
 {{- if $api.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress

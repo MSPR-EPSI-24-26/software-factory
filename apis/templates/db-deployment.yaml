@@ -1,4 +1,7 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
 {{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,7 +23,7 @@ spec:
         - name: {{ include "apis.fullname" (dict "name" $name) }}-db
           image: postgres:16-alpine
           ports:
-            - containerPort: {{ $api.dbPort }}
+            - containerPort: {{ default $defaults.db.port $merged.db.port }}
           env:
             - name: POSTGRES_USER
               value: {{ $api.env.DATABASE_USER | quote }}
@@ -30,7 +33,7 @@ spec:
               value: {{ $api.env.DATABASE_NAME | quote }}
           volumeMounts:
             - name: {{ include "apis.fullname" (dict "name" $name) }}-storage
-              mountPath: {{ $api.db.path }}
+              mountPath: {{ default $defaults.db.path $merged.db.path }}
     volumes:
       - name: {{ include "apis.fullname" (dict "name" $name) }}-storage
         persistentVolumeClaim:

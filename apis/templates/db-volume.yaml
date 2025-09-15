@@ -1,4 +1,7 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
 {{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -9,6 +12,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ $api.db.volume }}
+      storage: {{ default $defaults.db.volume $merged.db.volume }}
 ---
 {{- end }}

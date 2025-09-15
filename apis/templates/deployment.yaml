@@ -20,7 +20,7 @@ spec:
         app: {{ include "apis.fullname" (dict "name" $name) }}
     spec:
       imagePullSecrets:
-        - name: {{ $api.secret }}
+        - name: {{ default $defaults.secret $merged.secret }}
       containers:
         - name: {{ include "apis.fullname" (dict "name" $name) }}
           image: {{ $api.image }}

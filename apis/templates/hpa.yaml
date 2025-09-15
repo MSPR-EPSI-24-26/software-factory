@@ -1,5 +1,8 @@
+{{- $defaults := fromYaml (include "apis.defaults" .) -}}
 {{- range $name, $api := .Values.apis }}
+{{- $merged := merge $defaults $api }}
 {{- if $api.hpa.enabled }}
+
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -10,15 +13,15 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: {{ include "apis.fullname" (dict "name" $name) }}
-  minReplicas: {{ $api.hpa.minReplicas }}
-  maxReplicas: {{ $api.hpa.maxReplicas }}
+  minReplicas: {{ default $defaults.hpa.minReplicas $merged.hpa.minReplicas }}
+  maxReplicas: {{ default $defaults.hpa.maxReplicas $merged.hpa.maxReplicas }}
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: {{ $api.hpa.targetCPUUtilizationPercentage }}
+          averageUtilization: {{ default $defaults.hpa.targetCPUUtilization $merged.hpa.targetCPUUtilization }}
 ---
 {{- end }}
 {{- end }}
