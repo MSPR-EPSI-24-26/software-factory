@@ -10,6 +10,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-path
+  hostPath:
+    path: /mnt/data/{{ include "apis.fullname" (dict "name" $name) }}
   resources:
     requests:
       storage: {{ default $defaults.db.volume $merged.db.volume }}
