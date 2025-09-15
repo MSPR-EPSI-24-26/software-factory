@@ -19,7 +19,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: api-customers
-          image: ghcr.io/mspr-epsi-24-26/api-customers:fbaf470e7661867bf1d49ccec4744be3521bf911
+          image: ghcr.io/mspr-epsi-24-26/api-customers:5677e70b41f49081bb51c06122953ba24ee74666
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
