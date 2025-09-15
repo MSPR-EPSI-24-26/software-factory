@@ -15,3 +15,4 @@ hpa:
   minReplicas: 2
   maxReplicas: 6
   targetCPUUtilization: 50
+{{- end }}
