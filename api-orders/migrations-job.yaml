@@ -11,8 +11,16 @@ spec:
         - name: migrations-customers
           image: ghcr.io/mspr-epsi-24-26/api-orders:c08719b20ca451a1afb54f2c87376c3a49a0fc30
           command: ["node", "dist/data-source.js", "migration:run"]
-          envFrom:
-            - secretRef:
-                name: app-secrets
-            - configMapRef:
-                name: app-config
+          env:
+            - name: PORT
+              value: "3001"
+            - name: DATABASE_HOST
+              value: "db-service-orders"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              value: "password"
+            - name: DATABASE_NAME
+              value: "api_orders"
