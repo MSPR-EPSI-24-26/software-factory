@@ -9,5 +9,23 @@ ingress:
   host: customer.payetonkawa.shop
 db:
   replicas: 2
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
+    cpu: 2
+    memory: 2Gi
 volume:
   storage: 2Gi
+deploy:
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+hpa:
+  minReplicas: 2
+  maxReplicas: 6
+  cpuUtilization: 50

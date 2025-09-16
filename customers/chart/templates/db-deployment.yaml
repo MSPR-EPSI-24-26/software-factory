@@ -28,6 +28,13 @@ spec:
           volumeMounts:
             - name: db-storage-customers
               mountPath: /var/lib/postgresql/data
+          resources:
+            requests:
+              cpu: {{ .Values.db.requests.cpu }}
+              memory: {{ .Values.db.requests.memory }}
+            limits:
+              cpu: {{ .Values.db.limits.cpu }}
+              memory: {{ .Values.db.limits.memory }}
       volumes:
         - name: db-storage-customers
           persistentVolumeClaim:

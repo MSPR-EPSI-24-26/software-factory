@@ -38,3 +38,11 @@ spec:
               value: "{{ .Values.db.password }}"
             - name: DATABASE_NAME
               value: "{{ .Values.db.name }}"
+          resources:
+            requests:
+              cpu: {{ .Values.deploy.requests.cpu }}
+              memory: {{ .Values.deploy.requests.memory }}
+            limits:
+              cpu: {{ .Values.deploy.limits.cpu }}
+              memory: {{ .Values.deploy.limits.memory }}
+              
