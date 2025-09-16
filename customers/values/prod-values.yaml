@@ -10,21 +10,22 @@ ingress:
 db:
   replicas: 2
   requests:
-    cpu: 500m
+    cpu: 200m
     memory: 512Mi
   limits:
-    cpu: 2
-    memory: 2Gi
+    cpu: 400m
+    memory: 1Gi
 volume:
   storage: 2Gi
 deploy:
   requests:
-    cpu: 200m
+    cpu: 150m
     memory: 256Mi
   limits:
-    cpu: 1
-    memory: 1Gi
+    cpu: 400m
+    memory: 512Mi
 hpa:
+  enabled: true
   minReplicas: 2
-  maxReplicas: 6
+  maxReplicas: 3
   cpuUtilization: 50
