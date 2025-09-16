@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-orders
-  namespace: payetonkawa
+  namespace: payetonkawa-prod
   labels:
     app: api-orders
 spec:
@@ -38,3 +38,10 @@ spec:
               value: "password"
             - name: DATABASE_NAME
               value: "api_orders"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
