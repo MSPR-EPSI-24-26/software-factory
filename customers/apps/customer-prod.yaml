@@ -21,3 +21,7 @@ spec:
       namespace: payetonkawa-prod
       jsonPointers:
         - /spec/replicas
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
