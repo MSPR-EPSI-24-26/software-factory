@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-customers
+  namespace: payetonkawa-prod
+  labels:
+    app: api-customers
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-customers
+  template:
+    metadata:
+      labels:
+        app: api-customers
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: api-customers
+          image: ghcr.io/mspr-epsi-24-26/api-customers:d92fe8a902d451b2a2f4f625aaea10c37a3eef6e
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "3000"
+            - name: DATABASE_HOST
+              value: "db-service-customers"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              value: "password"
+            - name: DATABASE_NAME
+              value: "api_customers"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
