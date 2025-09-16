@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: message-broker
-  namespace: payetonkawa
+  namespace: payetonkawa-prod
   labels:
     app: message-broker
 spec:
