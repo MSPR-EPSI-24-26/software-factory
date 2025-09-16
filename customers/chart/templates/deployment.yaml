@@ -6,7 +6,7 @@ metadata:
   labels:
     app: api-customers
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: api-customers
@@ -29,7 +29,7 @@ spec:
             - name: PORT
               value: "{{ .Values.db.appPort }}"
             - name: DATABASE_HOST
-              value: "{{ .Values.db.host }}"
+              value: "db-service-customers"
             - name: DATABASE_PORT
               value: "{{ .Values.db.port }}"
             - name: DATABASE_USER

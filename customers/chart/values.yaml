@@ -1,9 +1,14 @@
 secret: ghcr-secret
+appPort: 3000
+targetPort: 3000
 db:
   appPort: 3000
-  host: db-service-customers
   port: 5432
   user: user
   password: password
   name: api_customers
   nodeEnv: production
+hpa:
+  minReplicas: 2
+  maxReplicas: 6
+  cpuUtilization: 50

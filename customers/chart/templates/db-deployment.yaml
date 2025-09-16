@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-customers
-  namespace: payetonkawa-prod
+  namespace: {{ .Values.namespace }}
 spec:
-  replicas: 2
+  replicas: {{ .Values.db.replicas }}
   selector:
     matchLabels:
       app: db-customers
@@ -17,14 +17,14 @@ spec:
         - name: postgres
           image: postgres:16-alpine
           ports:
-            - containerPort: 5432
+            - containerPort: {{ .Values.db.port }}
           env:
             - name: POSTGRES_USER
-              value: "user"
+              value: {{ .Values.db.user }}
             - name: POSTGRES_PASSWORD
-              value: "password"
+              value: {{ .Values.db.password }}
             - name: POSTGRES_DB
-              value: "api_customers"
+              value: {{ .Values.db.name }}
           volumeMounts:
             - name: db-storage-customers
               mountPath: /var/lib/postgresql/data
