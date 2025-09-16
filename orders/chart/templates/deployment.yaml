@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-orders
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: api-orders
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: api-orders
+  template:
+    metadata:
+      labels:
+        app: api-orders
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.secret }}
+      containers:
+        - name: api-orders
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.policy }}
+          ports:
+            - containerPort: {{ .Values.image.port }}
+          env:
+            - name: NODE_ENV
+              value: "{{ .Values.db.nodeEnv }}"
+            - name: PORT
+              value: "{{ .Values.db.appPort }}"
+            - name: DATABASE_HOST
+              value: "db-service-orders"
+            - name: DATABASE_PORT
+              value: "{{ .Values.db.port }}"
+            - name: DATABASE_USER
+              value: "{{ .Values.db.user }}"
+            - name: DATABASE_PASSWORD
+              value: "{{ .Values.db.password }}"
+            - name: DATABASE_NAME
+              value: "{{ .Values.db.name }}"

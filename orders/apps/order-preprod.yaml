@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: order-preprod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:MSPR-EPSI-24-26/software-factory.git
+    targetRevision: main
+    path: orders/chart
+    helm:
+      valueFiles:
+        - ../values/preprod-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: payetonkawa-preprod

@@ -1,0 +1,14 @@
+secret: ghcr-secret
+appPort: 3001
+targetPort: 3001
+db:
+  appPort: 3001
+  port: 5432
+  user: user
+  password: password
+  name: api_orders
+  nodeEnv: production
+hpa:
+  minReplicas: 2
+  maxReplicas: 6
+  cpuUtilization: 50
