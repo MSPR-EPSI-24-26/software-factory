@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-products
-  namespace: payetonkawa
+  namespace: payetonkawa-prod
 spec:
   replicas: 2
   selector:
@@ -28,6 +28,13 @@ spec:
           volumeMounts:
             - name: db-storage-products
               mountPath: /var/lib/postgresql/data
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
       volumes:
         - name: db-storage-products
           persistentVolumeClaim:
