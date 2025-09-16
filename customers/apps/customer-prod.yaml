@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mspr-24-26/software-factory.git
+    repoURL: git@github.com:MSPR-EPSI-24-26/software-factory.git
     targetRevision: main
     path: customers/manifests/prod
   destination:
