@@ -1,0 +1,9 @@
+namespace: payetonkawa-preprod
+replicaCount: 1
+image:
+  repository: ghcr.io/mspr-epsi-24-26/api-customers
+  tag: dev
+  policy: Always
+  port: 3000
+ingress:
+  host: customer.preprod.payetonkawa.shop

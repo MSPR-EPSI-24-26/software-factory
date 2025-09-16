@@ -8,11 +8,10 @@ spec:
   source:
     repoURL: git@github.com:MSPR-EPSI-24-26/software-factory.git
     targetRevision: main
-    path: customers/manifests/prod
+    path: chart
+    helm:
+      valueFiles:
+        - ../values/prod-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: payetonkawa-prod
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true

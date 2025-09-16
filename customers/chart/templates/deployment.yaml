@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-customers
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: api-customers
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: api-customers
+  template:
+    metadata:
+      labels:
+        app: api-customers
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.secret }}
+      containers:
+        - name: api-customers
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.policy }}
+          ports:
+            - containerPort: {{ .Values.image.port }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.db.nodeEnv }}
+            - name: PORT
+              value: {{ .Values.db.appPort }}
+            - name: DATABASE_HOST
+              value: {{ .Values.db.host }}
+            - name: DATABASE_PORT
+              value: {{ .Values.db.port }}
+            - name: DATABASE_USER
+              value: {{ .Values.db.user }}
+            - name: DATABASE_PASSWORD
+              value: {{ .Values.db.password }}
+            - name: DATABASE_NAME
+              value: {{ .Values.db.name }}

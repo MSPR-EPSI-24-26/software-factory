@@ -7,11 +7,11 @@ spec:
   project: default
   source:
     repoURL: git@github.com:MSPR-EPSI-24-26/software-factory.git
-    path: customers/manifests/preprod
+    targetRevision: main
+    path: chart
+    helm:
+      valueFiles:
+        - ../values/preprod-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: payetonkawa-preprod
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true

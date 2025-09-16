@@ -1,0 +1,9 @@
+secret: ghcr-secret
+db:
+  appPort: 3000
+  host: db-service-customers
+  port: 5432
+  user: user
+  password: password
+  name: api_customers
+  nodeEnv: production
