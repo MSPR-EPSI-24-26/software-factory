@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git@github.com:MSPR-EPSI-24-26/software-factory.git
     targetRevision: main
-    path: chart
+    path: customers/chart
     helm:
       valueFiles:
         - ../values/preprod-values.yaml
