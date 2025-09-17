@@ -34,6 +34,6 @@ data:
 
       - job_name: 'message-broker'
         static_configs:
-          - targets: ['message-broker-service:3003']
+          - targets: ['api-message-broker-service:3003']
         metrics_path: /metrics
         scrape_interval: 15s
