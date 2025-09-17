@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: payetonkawa-prod
+data:
+  grafana.ini: |
+    [security]
+    admin_user = admin
+    admin_password = admin
+
+  datasources.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus:9091
+        access: proxy
+        isDefault: true
