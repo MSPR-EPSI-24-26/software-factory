@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-products
+  namespace: payetonkawa-prod
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrations-products
+          image: ghcr.io/mspr-epsi-24-26/api-products:ea49b8a2e957fc3c5571eca35be6fe7a525d8fc4
+          command: ["node", "dist/data-source.js", "migration:run"]
+          env:
+            - name: PORT
+              value: "3002"
+            - name: DATABASE_HOST
+              value: "db-service-products"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_USER
+              value: "user"
+            - name: DATABASE_PASSWORD
+              value: "password"
+            - name: DATABASE_NAME
+              value: "api_products"
