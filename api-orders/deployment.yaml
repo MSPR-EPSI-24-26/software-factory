@@ -19,7 +19,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: api-orders
-          image: ghcr.io/mspr-epsi-24-26/api-orders:dd211131b3f990f4e3dcdefd26be062b6ba0db4e
+          image: ghcr.io/mspr-epsi-24-26/api-orders:202a919ff947272c8947d60b3d3b68ef6a473ae9
           imagePullPolicy: Always
           ports:
             - containerPort: 3001
