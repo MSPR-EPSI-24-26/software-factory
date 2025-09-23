@@ -38,6 +38,8 @@ spec:
               value: "password"
             - name: DATABASE_NAME
               value: "api_orders"
+            - name: AUTH_SERVICE_URL
+              value: http://api-customers-service:3000/auth/validate-permission
           resources:
             requests:
               cpu: 50m
