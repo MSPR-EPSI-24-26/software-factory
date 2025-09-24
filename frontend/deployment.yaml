@@ -35,7 +35,7 @@ spec:
             - name: NEXT_PUBLIC_API_PRODUCTS_URL
               value: https://products.payetonkawa.shop
             - name: NEXT_PUBLIC_API_MESSAGE_BROKER_URL
-              value: http://api-message-broker-service:3003
+              value: https://message-broker.payetonkawa.shop
           resources:
             requests:
               cpu: 50m
