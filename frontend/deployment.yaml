@@ -19,7 +19,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: frontend-app
-          image: ghcr.io/mspr-epsi-24-26/front:64ba33afd3cd0341ab4dfcd0e3c70abe21f8c28c
+          image: ghcr.io/mspr-epsi-24-26/front:72c629c4b83f5639a374489a60ffb3acc0ec583d
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
