@@ -29,11 +29,11 @@ spec:
             - name: PORT
               value: "3000"
             - name: NEXT_PUBLIC_API_CUSTOMER_URL
-              value: http://api-customers-service:3000
+              value: https://customers.payetonkawa.shop
             - name: NEXT_PUBLIC_API_ORDERS_URL
-              value: http://api-orders-service:3001
+              value: https://orders.payetonkawa.shop
             - name: NEXT_PUBLIC_API_PRODUCTS_URL
-              value: http://api-products-service:3002
+              value: https://products.payetonkawa.shop
             - name: NEXT_PUBLIC_API_MESSAGE_BROKER_URL
               value: http://api-message-broker-service:3003
           resources:
